@@ -1,0 +1,249 @@
+body {
+    /* Fondo con imagen desenfocada - EXTENSIÓN CORREGIDA A .jpg */
+    background-image: url('VÍDEO\ DE\ ENTRADA.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    font-family: Arial, sans-serif;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.diagram-container {
+    flex-grow: 1; 
+    position: relative; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Altura aumentada para escritorio para evitar superposiciones */
+.left-column-markers, .right-column-markers, .central-column-markers {
+    min-height: 95vh; 
+    border-right: 1px dashed rgba(255, 255, 255, 0.3);
+    border-left: 1px dashed rgba(255, 255, 255, 0.3);
+    margin: 0 -1px;
+}
+
+/* ---------------- IMAGEN CENTRAL DE QUIMO Y LOLA ---------------- */
+.central-image-logo {
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    z-index: 5;
+    width: 80%; 
+    max-width: 500px;
+}
+
+.central-image-logo img {
+    width: 120%;
+    height: auto;
+     
+}
+/* ---------------- FIN IMAGEN CENTRAL ---------------- */
+
+
+/* ---------------- LOGO DEYFOR PRINCIPAL (CONTENEDOR DE LA IMAGEN) ---------------- */
+.logo-button {
+    /* Eliminar estilo predeterminado del botón para que parezca solo la imagen */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.logo-button:hover {
+    transform: scale(1.05);
+}
+
+.main-logo-image {
+    width: 150px; 
+    height: auto;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 50%; 
+}
+
+/* El main-video-marker es el contenedor del logo y el texto */
+.main-video-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* ---------------- FIN LOGO DEYFOR PRINCIPAL ---------------- */
+
+
+/* ---------------- Estilos para los "Globitos" - TAMAÑO REDUCIDO ---------------- */
+
+.marker-group {
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.marker-icon {
+    background-color: #38c172; 
+    color: white;
+    border: none;
+    border-radius: 50% 50% 50% 0; /* Forma de gota */
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: rotate(-45deg); 
+    transition: background-color 0.3s, transform 0.2s ease-out;
+    font-size: 1.2rem; 
+}
+
+.marker-icon:hover {
+    background-color: #2e9f60;
+    transform: rotate(-45deg) scale(1.1); 
+}
+
+.marker-icon i {
+    transform: rotate(45deg); 
+}
+
+.marker-label {
+    color: white;
+    font-weight: bold;
+    margin-top: 10px; 
+    padding: 3px 6px; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-radius: 4px;
+    font-size: 0.8rem; 
+    /* MODIFICADO: Permite el salto de línea para que los nombres aparezcan completos */
+    white-space: normal;
+    text-align: center; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    /* MODIFICADO: Aumenta el ancho máximo para mejor distribución del texto */
+    max-width: 150px; 
+    /* ELIMINADO: overflow: hidden; y text-overflow: ellipsis; */
+}
+
+/* Tamaños especiales */
+.main-video-marker .big-label {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.large-marker .marker-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+}
+
+.large-marker .marker-label {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+}
+
+.text-label {
+    color: white; 
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute; 
+    z-index: 5;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-size: 1.1rem; 
+}
+
+/* ---------------- Modal de Video ---------------- */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px; 
+}
+
+/* Aplica el estilo de responsividad a la etiqueta VIDEO de HTML5 */
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ---------------- Ajustes Responsive para Móvil/Tableta ---------------- */
+@media (max-width: 991.98px) {
+    .left-column-markers, .right-column-markers, .central-column-markers {
+        min-height: unset; 
+        height: auto;
+        border: none; 
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+
+    /* Logo principal en móvil */
+    .main-logo-image {
+        width: 100px;
+        box-shadow: none;
+    }
+
+    /* Imagen central en móvil: cambia a posición relativa para que fluya */
+    .central-image-logo {
+        position: relative; 
+        transform: none;
+        top: unset !important;
+        left: unset !important;
+        margin: 20px auto; 
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .marker-group {
+        position: relative; 
+        transform: none; 
+        margin-bottom: 20px; 
+        top: unset !important; 
+        left: unset !important;
+        right: unset !important;
+        width: 100%;
+        max-width: 250px; 
+    }
+
+    .marker-icon {
+        width: 35px; 
+        height: 35px;
+        font-size: 1.1rem;
+        transform: rotate(-45deg); 
+    }
+    
+    .marker-icon:hover {
+        transform: rotate(-45deg) scale(1.05); 
+    }
+
+    .marker-label {
+        font-size: 0.75rem; 
+        margin-top: 5px;
+        white-space: normal; /* Asegura el salto de línea en móvil */
+        max-width: 150px;
+    }
+
+    .main-video-marker .big-label {
+        font-size: 0.9rem;
+    }
+
+    .text-label {
+        position: relative; 
+        transform: none;
+        margin-bottom: 20px;
+    }
+}
