@@ -1,14 +1,32 @@
 body {
-    /* Fondo con imagen desenfocada - EXTENSIÓN CORREGIDA A .jpg */
-    background-image: url('VÍDEO\ DE\ ENTRADA.png'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /* Eliminamos las propiedades de fondo de body */
     
     font-family: Arial, sans-serif;
     min-height: 100vh; 
     display: flex;
     flex-direction: column;
+    
+    /* Agregamos esto para que el contenido de la página se mantenga sobre el pseudo-elemento */
+    position: relative; 
+    overflow-x: hidden;
+}
+
+/* PSEUDO-ELEMENTO PARA EL FONDO CON DESENFOQUE APLICADO */
+body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('VÍDEO\ DE\ ENTRADA.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* AUMENTO DEL VALOR DE BLUR para que se difumine mucho más */
+    filter: blur(3px); 
+    /* Asegura que el fondo esté detrás de todo el contenido */
+    z-index: -1; 
 }
 
 .diagram-container {
@@ -87,8 +105,9 @@ body {
     z-index: 10;
 }
 
+/* Estilo para los globitos normales (forma de gota con icono de play) */
 .marker-icon {
-    background-color: #38c172; 
+    background-color: #98d457; /* Color VERDE por defecto */
     color: white;
     border: none;
     border-radius: 50% 50% 50% 0; /* Forma de gota */
@@ -127,15 +146,9 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     /* MODIFICADO: Aumenta el ancho máximo para mejor distribución del texto */
     max-width: 150px; 
-    /* ELIMINADO: overflow: hidden; y text-overflow: ellipsis; */
 }
 
-/* Tamaños especiales */
-.main-video-marker .big-label {
-    font-size: 1rem;
-    padding: 5px 10px;
-}
-
+/* Tamaños especiales para marcadores grandes */
 .large-marker .marker-icon {
     width: 45px;
     height: 45px;
@@ -147,6 +160,18 @@ body {
     padding: 4px 8px;
 }
 
+/* ESTILOS AGREGADOS: Marcadores grandes de color alternativo */
+.large-marker-icon-alt .marker-icon {
+    background-color: #06bf59; /* Color AZUL para estos globos */
+}
+
+.large-marker-icon-alt .marker-icon:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    transform: rotate(-45deg) scale(1.1); 
+}
+/* FIN ESTILOS AGREGADOS */
+
+/* Estilo para el TÍTULO */
 .text-label {
     color: white; 
     font-weight: bold;
@@ -155,8 +180,40 @@ body {
     position: absolute; 
     z-index: 5;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    font-size: 1.1rem; 
+    /* MODIFICADO para un título más grande */
+    font-size: 2.5rem; 
 }
+
+/* ---------------- BARRA DE PROGRESO ---------------- */
+.progress-bar-fixed-position {
+    position: absolute;
+    transform: translateX(-50%); /* Centra horizontalmente */
+    width: 90%; 
+    max-width: 400px; /* Limita el ancho para que no sea demasiado grande */
+    z-index: 10;
+}
+
+.progress-text {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.progress {
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.6); /* Fondo semi-transparente */
+    border-radius: 5px;
+}
+
+.progress-bar {
+    border-radius: 5px;
+    transition: width 0.5s ease; /* Transición para un efecto de carga suave */
+}
+/* ---------------- FIN BARRA DE PROGRESO ---------------- */
+
 
 /* ---------------- Modal de Video ---------------- */
 .video-container {
@@ -178,8 +235,86 @@ body {
     border: 0;
 }
 
+/* ---------------- ESTILOS PARA LA IMAGEN DE OJITOS Y SU POP-UP ---------------- */
+.image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-button:hover {
+    transform: scale(1.1);
+}
+
+.impulse-image {
+    width: 60px; /* Tamaño del icono de ojitos */
+    height: auto;
+    display: block;
+}
+
+.impulse-label {
+    /* Sobreescribe el margen por defecto del marker-label para que esté más cerca de la imagen */
+    margin-top: 5px; 
+    font-size: 0.75rem; /* Etiqueta más pequeña para el nombre */
+}
+
+/* ESTILOS DE TRANSPARENCIA PARA EL MODAL IMPULSO DEY 360 */
+#impulseModal .modal-content {
+    background-color: transparent; 
+    border: none;
+    box-shadow: none;
+}
+
+#impulseModal .modal-header {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para el encabezado */
+    border-bottom: none;
+    color: white; 
+    border-radius: 0.3rem 0.3rem 0 0; 
+}
+
+#impulseModal .modal-title {
+    color: white;
+}
+
+#impulseModal .btn-close {
+    filter: invert(1) grayscale(1) brightness(2); /* Hace la 'x' blanca o muy clara */
+}
+
+#impulseModal .modal-body {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para el cuerpo */
+    border-radius: 0 0 0.3rem 0.3rem; 
+    padding: 20px;
+}
+
+#impulseModal .marker-label {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+/* FIN ESTILOS DE TRANSPARENCIA */
+
+
 /* ---------------- Ajustes Responsive para Móvil/Tableta ---------------- */
 @media (max-width: 991.98px) {
+    /* Quitamos el pseudo-elemento en móvil y volvemos a poner el fondo en body 
+       para simplificar el responsive si es necesario. Si el fondo es fijo, 
+       esta sección puede no ser necesaria: */
+    body::before {
+        display: none;
+    }
+
+    body {
+        background-image: url('VÍDEO\\ DE\\ ENTRADA.png'); 
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll; /* Cambia a scroll en móvil */
+        
+    }
+
     .left-column-markers, .right-column-markers, .central-column-markers {
         min-height: unset; 
         height: auto;
@@ -208,6 +343,17 @@ body {
         max-width: 300px;
     }
 
+    /* Barra de progreso en móvil: cambia a posición relativa */
+    .progress-bar-fixed-position {
+        position: relative; 
+        transform: none;
+        top: unset !important;
+        left: unset !important;
+        margin: 20px auto; 
+        width: 90%;
+        max-width: 300px; 
+    }
+
     .marker-group {
         position: relative; 
         transform: none; 
@@ -225,6 +371,7 @@ body {
         font-size: 1.1rem;
         transform: rotate(-45deg); 
     }
+
     
     .marker-icon:hover {
         transform: rotate(-45deg) scale(1.05); 
@@ -237,13 +384,18 @@ body {
         max-width: 150px;
     }
 
-    .main-video-marker .big-label {
-        font-size: 0.9rem;
-    }
-
     .text-label {
         position: relative; 
         transform: none;
         margin-bottom: 20px;
+        /* MODIFICADO para un título más grande en móvil */
+        font-size: 1.3rem;
+    }
+
+    /* Ajuste para la imagen de ojitos en móvil */
+    .marker-group:has(.image-button) {
+        /* Fuerza a que el botón de ojitos esté al final de la columna derecha */
+        order: 100;
+        margin-top: 30px;
     }
 }
