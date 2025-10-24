@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama Interactivo con Globitos</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container-fluid diagram-container">
+        <div class="text-label" style="top: 5px; left: 50%; transform: translateX(-50%);">
+            ¿QUE QUIERES CONOCER HOY?
+        </div>
+        <div class="row g-2 justify-content-center">
+            
+            <div class="col-12 col-lg-3 d-flex flex-column align-items-center position-relative order-lg-1 left-column-markers">
+                <div class="marker-group" style="top: 7%; left:45%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_mision.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Misión</div>
+                </div>
+                <div class="marker-group" style="top: 15%; left: 15%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_vision.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Visión</div>
+                </div>
+                <div class="marker-group" style="top: 20%; left: 60%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_objetivos.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Objetivos Organizacionales</div>
+                </div>
+                <div class="marker-group" style="top: 30%; left: 25%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_valores.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Valores</div>
+                </div>
+                <div class="marker-group" style="top: 36%; left: 60%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_acreditaciones.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Acreditacion y Reconocimientos</div>
+                </div>
+            
+                <div class="marker-group" style="top: 60%; left: 50%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_ambiental.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Ambiental</div>
+                </div>
+                <div class="marker-group" style="top: 70%; left: 15%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_social.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Social</div>
+                </div>
+                <div class="marker-group" style="top: 80%; left: 60%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_gobernanza.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Gobernanza</div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative order-lg-2 central-column-markers">
+                
+                <div class="marker-group large-marker large-marker-icon-alt" style="top: 25%; left: 5%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_quienes_somos.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">CAMPAMENTO CONOCENOS MÁS</div>
+                </div>
+
+                <div class="marker-group main-video-marker" style="top: 40%; left: 50%;">
+                    <button class="logo-button" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_entrada_principal.mp4">
+                        <img src="LOGO 0.png" alt="Logo DEYFOR" class="main-logo-image">
+                    </button>
+                     
+                </div>
+
+                <div class="central-image-logo" style="top: 80%; left: 50%;"> 
+                    <img src="LOGOS DEYFOR 2025 (5).png" alt="Quimo y Lola" class="img-fluid">
+                </div>
+                
+                <div id="progress-container" class="progress-bar-fixed-position" style="top: 95%; left: 50%;">
+                    <div id="progress-text" class="progress-text">0 / X Videos Vistos</div>
+                    <div class="progress" role="progressbar" aria-label="Progreso de videos vistos" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div id="video-progress-bar" class="progress-bar bg-success" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="marker-group large-marker large-marker-icon-alt" style="top: 70%; left: 5%;"> 
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_sostenibilidad.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">CAMPAMENTO DE SOSTENIBILIDAD </div>
+                </div>
+                
+                <div class="marker-group large-marker large-marker-icon-alt" style="top: 25%; right: -10%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_lineas_negocio.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">CAMPAMENTO LÍNEAS DE NEGOCIO </div>
+                </div>
+
+                <div class="marker-group large-marker large-marker-icon-alt" style="top: 70%; right: -10%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_nuestros_mps.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">CAMPAMENTO BACK OFFICE</div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 d-flex flex-column align-items-center position-relative order-lg-3 right-column-markers">
+                <div class="marker-group" style="top: 8%; left: 75%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_cimentaciones.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Ingenieria y Construccion</div>
+                </div>
+                <div class="marker-group" style="top: 15%; left: 40%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_servicios_mineros.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Servicios Mineros</div>
+                </div>
+                <div class="marker-group" style="top: 23%; left: 70%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_parada_planta.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Parada de Planta</div>
+                </div>
+                <div class="marker-group" style="top: 30%; left: 35%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_consorcios.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">Consorcios</div>
+                </div>
+                
+                
+                <div class="marker-group" style="top: 58%; left: 20%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_gth.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">GTH</div>
+                </div>
+                <div class="marker-group" style="top: 78%; left: 20%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_ti.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">TI</div>
+                </div>
+                <div class="marker-group" style="top: 68%; left: 40%;">
+                    <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_ac.mp4"><i class="fas fa-play-circle"></i></button>
+                    <div class="marker-label">AC</div>
+                </div>
+                
+                <div class="marker-group" style="top: 95%; right: 5%; transform: translate(0, -50%);">
+                    <button class="image-button" data-bs-toggle="modal" data-bs-target="#impulseModal">
+                        <img src="icon-impulso360.png   " alt="Impulso DEY 360" class="impulse-image">
+                    </button>
+                    <div class="marker-label impulse-label">IMPULSO DEY 360</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="video-container">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="impulseModal" tabindex="-1" aria-labelledby="impulseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header " >
+                    <h5 class="modal-title" id="impulseModalLabel" >IMPULSO DEY 360 </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_ps.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">Operaciones</div>
+                        </div>
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_smc.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">SMC</div>
+                        </div>
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_asc.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">ASC</div>
+                        </div>
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_logistica.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">Logística</div>
+                        </div>
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_ssoma.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">SSOMA</div>
+                        </div>
+                        <div class="col-4 d-flex flex-column align-items-center">
+                            <button class="marker-icon" data-bs-toggle="modal" data-bs-target="#videoModal" data-video-file="video_sg.mp4"><i class="fas fa-play-circle"></i></button>
+                            <div class="marker-label">SG</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
